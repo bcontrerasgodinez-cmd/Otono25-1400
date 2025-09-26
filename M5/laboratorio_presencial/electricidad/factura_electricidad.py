@@ -26,7 +26,7 @@ def factura_electricidad():
     else:
         kwh_nivel1 = 100
         cargo_nivel1 = 20.00 
-        kwh_nivel2 = 300
+        kwh_nivel2 = 200
         cargo_nivel2 = kwh_nivel2 *.15
         kwh_nivel3 = consumo_kwh-300
         cargo_nivel3 =  kwh_nivel3 *.25   
