@@ -28,10 +28,10 @@ def ordenar_de_mayor_a_menor(lista_numeros):
     """
     # TODO: Paso 1. Ordena la lista de menor a mayor usando .sort()
     # lista_numeros.sort()
-
+    lista_numeros.sort() #.sort es para ordenar de menor a mayor
     # TODO: Paso 2. Invierte la lista para que quede de mayor a menor.
     # lista_numeros.reverse()
-
+    lista_numeros.reverse() #.reverse es para ordenar al conrario
     # Esta función no necesita un `return`.
 
 
