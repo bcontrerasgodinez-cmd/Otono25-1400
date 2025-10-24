@@ -15,7 +15,7 @@ print(estalista)
 
 estalista.remove("pera") #parte 2 (Brandy y Enrique)
 print(estalista)
-estalista.pop() #esta es una segunda forma
+estalista.pop() #esta es una segunda forma, quita o elimina el ultimo elemento
 print(estalista)
 
 #diccionario y tupla

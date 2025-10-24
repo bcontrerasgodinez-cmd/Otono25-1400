@@ -30,7 +30,7 @@ def agregar_producto(nombre, precio, stock):
     # Crea una NUEVA TUPLA con el precio y stock, y úsala para actualizar
     # el diccionario 'inventario' con el nombre del producto como CLAVE.
     
-    # [código va aquí]
+    inventario[nombre] = (precio, stock)# [código va aquí]
     
     print(f"\n✅ Producto '{nombre}' agregado/actualizado.")
 
@@ -41,9 +41,12 @@ def buscar_precio(nombre):
     # Si la clave existe, desempaqueta la tupla para obtener el precio
     # (el primer elemento) y lo retorna. Si no existe, retorna None.
     
-    # [Tu código va aquí]
-    
-    pass # Reemplaza esta línea
+    detalles = inventario.get(nombre)
+    if detalles:
+        precio, _= detalles
+        return precio# [Tu código va aquí]
+    return None
+     # Reemplaza esta línea
 
 def valor_total_inventario():
     """Calcula el valor monetario total de todos los productos en stock."""
@@ -53,7 +56,8 @@ def valor_total_inventario():
         # Desempaqueta la tupla 'detalles' para obtener el precio y el stock.
         # Multiplica el precio por el stock y suma el resultado a 'valor_total'.
         
-        # [Tu código va aquí]
+        precio, stock= detalles
+        valor_total += precio * stock# [Tu código va aquí]
         
     return valor_total
 
