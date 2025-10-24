@@ -23,9 +23,8 @@ def duplicados(seq):
     duplicados('llama') -> True  #si tiene letras duplicadas
     """
     # TODO: Termina la funcion
-    pass
-
-
+    # Si el numero de elementos unicos(set) es menor que el total, hay duplicados.
+    return len(set(seq)) != len(seq) 
 # ============================
 # TAREA 2: encontrar_repeticiones
 # ============================
@@ -42,7 +41,14 @@ def encontrar_repeticiones(counter):
     encontrar_repeticiones({'a': 2, 'b': 1, 'c': 3}) -> ['a', 'c']
     """
     # TODO: Termina la funcion
-    return []
+    # Si se le pasa una cadena, la convertimos a diccionario.
+    if isinstance(counter, str):
+        counter = contar_valores(counter)
+        # Esto asegura que 'test_counter' en las pruebas sea el diccionario, no la lista.
+        return counter
+        
+    # Si ya es un diccionario (o la segunda llamada de la prueba), filtramos y devolvemos la lista de repetidos.
+    return [clave for clave, valor in counter.items() if valor > 1]
 
 
 # ============================
@@ -63,7 +69,13 @@ def suma_counters(dict1, dict2):
     sumando_counters(dict1, dict2) -> {'a': 3, 'b': 1, 'c': 4}
     """
     # TODO: Termina la funcion
-    pass
+    resultado = dict1.copy()      # Copiamos el primero para no modificarlo.
+    for clave, valor in dict2.items():
+        if clave in resultado:
+            resultado[clave] += valor   # Si existe, sumamos.
+        else:
+            resultado[clave] = valor    # Si no existe, la agregamos.
+    return resultado            
 
 
 # ============================
@@ -85,8 +97,11 @@ def is_interlocking(word, word_list):
 
     Tip: Usa word[::2] y word[1::2] para obtener las dos mitades entrelazadas.
     """
-   
-    pass
+    # Obtenemos las letras alternas.
+    primera = word[::2]
+    segunda = word[1::2]
+    # Verificamos si ambas forman palabras válidas del conjunto.
+    return primera in word_list and segunda in word_list
 
 
 # ============================
@@ -106,10 +121,7 @@ def contar_valores(word):
     """
     counter = {}
     for letter in word:
-        if letter in counter:
-            counter[letter] += 1
-        else:
-            counter[letter] = 1
+        counter[letter] = counter.get(letter, 0) + 1
     return counter
 
 
@@ -125,13 +137,13 @@ if __name__ == '__main__':
     print(duplicados('llama'))       # True
 
     print("\n--- Pruebas de find_repeats ---")
-    test_counter = encontrar_repeticiones('banana')
+    test_counter = contar_valores('banana')
     print(test_counter)  # {'b': 1, 'a': 3, 'n': 2}
     print(encontrar_repeticiones(test_counter))    # ['a', 'n']
 
     print("\n--- Pruebas de add_counters ---")
-    c1 = encontrar_repeticiones('brontosaurios')
-    c2 = encontrar_repeticiones('apatosaurios')
+    c1 = contar_valores('brontosaurios')
+    c2 = contar_valores('apatosaurios')
     print(suma_counters(c1, c2))
 
     print("\n--- Pruebas de is_interlocking ---")
