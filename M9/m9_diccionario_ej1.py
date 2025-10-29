@@ -44,10 +44,9 @@ def encontrar_repeticiones(counter):
     # Si se le pasa una cadena, la convertimos a diccionario.
     if isinstance(counter, str):
         counter = contar_valores(counter)
-        # Esto asegura que 'test_counter' en las pruebas sea el diccionario, no la lista.
-        return counter
+
         
-    # Si ya es un diccionario (o la segunda llamada de la prueba), filtramos y devolvemos la lista de repetidos.
+    # Filtramos y devolvemos la lista de repetidos.
     return [clave for clave, valor in counter.items() if valor > 1]
 
 
