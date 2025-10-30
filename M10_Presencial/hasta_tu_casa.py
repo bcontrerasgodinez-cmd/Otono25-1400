@@ -3,13 +3,12 @@
 # Programa en español que pide dónde naciste y dónde vives ahora,
 # obtiene coordenadas mediante geocoding y calcula la distancia en km.
 
-###from geopy.geocoders import Nominatim
-###from geopy.exc import GeocoderServiceError
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderServiceError
 import math
 import sys
 import re
-import time
-
+import time 
 def parse_coords(text):
     """
     Intenta detectar si el usuario introdujo 'lat, lon' directamente.
