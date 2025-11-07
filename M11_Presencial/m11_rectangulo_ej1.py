@@ -34,6 +34,8 @@ class Rectangulo:
         # Almacena el ancho y el alto como atributos de la instancia.
         # self.ancho = ...
         # self.alto = ...
+        self.ancho = ancho
+        self.alto = alto
         print(f"Rectángulo creado con ancho {ancho} y alto {alto}")
 
     # TODO: Paso 2. Completa el método para calcular el área.
@@ -46,7 +48,7 @@ class Rectangulo:
         """
         # El área es el producto del ancho y el alto del objeto.
         # return self.ancho * ...
-        return 0  # Reemplaza esto con tu cálculo
+        return self.ancho * self.alto  # Reemplaza esto con tu cálculo, hecho
 
 
 # --- Bloque para probar tu clase ---
@@ -59,3 +61,11 @@ if __name__ == "__main__":
 
     print(f"El área del rectángulo es: {area}")
 # --- Fin del bloque de prueba ---
+"""
+El dia de hoy vino la Dr. Tiia Shrakorpi, Autumn 2025
+Que hacemos con la basura?
+Nos hablo sobre energias renovables, una historia que sucedio en 1980s y tambien lo sucedido en Philadelphia de 1960
+a 1986. Nos comento que el metal/aluminio es reusable 
+y se gasta mucha energia para volver a hacerlo desde cero entonces es muy importante reutilizarlo. Algo que me intereso 
+fue la diferencia de impacto del Metano o el Dioxido de carbono (CO2) hacia la atmosfera.
+"""
