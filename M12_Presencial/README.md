@@ -20,7 +20,7 @@ B. Leer el CSV e Imprimir:
 
 1. En gestion_registros.py, importa el módulo csv al inicio. 
 2. Usa la estructura with open(...) junto con csv.reader() para leer inventario.py.
-3. Itera sobre las filas del documento e imprimi solo los productos cuyo stock sea menor a 100. 
+3. Itera sobre las filas del documento e imprimi solo los cantantes. 
 
 Salida esperada:
 Productos con bajo stock:

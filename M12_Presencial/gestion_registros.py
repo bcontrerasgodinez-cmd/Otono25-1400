@@ -6,13 +6,13 @@
 
 # w Funcion para escribir en el archivo
 #def escribirDocumento(data):
-#    with open("salida.txt", "w", encoding="utf-8") as fileToWriteTo:
+#    with open("salida.txt", "a", encoding="utf-8") as fileToWriteTo:
 #        fileToWriteTo.write(data + "\n")
 
 
 # TODO 1:
 # Reemplazar 'Megan,38,desayuno' con su nombre, edad, y su preferencia entre desayuno almuerzo, o cena.
-#miEntrada = 'Megan,38,desayuno'
+#miEntrada = 'Brandy,18,cena'
 #escribirDocumento(miEntrada)
 
 # TODO 2:
@@ -21,12 +21,26 @@
     with open("salida.txt", "a") as fileToWriteTo:
         fileToWriteTo.write(data + "\n") 
 
-#agregarAlDocumento("Angelica,21,almuerzo")"""
+otra_entrada = 'Angelica,32,almuerzo'
+agregarAlDocumento(otra_entrada)
+otra2_entrada = 'Enrique,45,desayuno'
+agregarAlDocumento(otra2_entrada)
+otra3_entrada = 'Marleny,27,cena'
+agregarAlDocumento(otra3_entrada)
+"""
 
 # TODO 3: 
 # r 
-"""
-def leerDocumento():
+"""def leerDocumento():
     with open("salida.txt", "r") as fileToReadFrom:
         contenido = fileToReadFrom.read()
-        print(contenido)"""
+        print(contenido)
+leerDocumento()
+"""
+import csv
+
+with open("informacion.csv", "r", encoding='utf-8') as a:
+    lector = csv.DictReader(a)
+    for linea in lector:
+        print(linea["cantante"])
+
