@@ -37,6 +37,33 @@ agregarAlDocumento(otra3_entrada)
         print(contenido)
 leerDocumento()
 """
+import json
+nuevo_producto = {
+    "ID": 104,
+    "Nombre": "Webcam",
+    "Precio": 45.99,
+    "Stock": 50
+}
+
+try:
+    with open("producto_nuevo.json", "w") as archivo_json:
+        # json.dump() toma el diccionario y el objeto archivo para escribir
+        json.dump(nuevo_producto, archivo_json, indent=4)
+    print("Diccionario guardado exitosamente en producto_nuevo.json")
+except IOError as e:
+    print(f"Error al escribir el archivo: {e}")
+try:
+    with open("producto_nuevo.json", "r") as archivo_json:
+        data_cargada = json.load(archivo_json)
+        print("\nProducto cargado desde JSON:")
+        print(f"Nombre: {data_cargada['Nombre']}")
+        print(f"Precio: {data_cargada['Precio']}")
+
+except FileNotFoundError:
+    print("\nError: El archivo 'producto_nuevo.json' no se encontró.")
+except json.JSONDecodeError as e:
+    print(f"\nError al decodificar JSON: {e}")
+    
 import csv
 
 with open("informacion.csv", "r", encoding='utf-8') as a:

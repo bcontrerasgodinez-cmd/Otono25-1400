@@ -1,5 +1,3 @@
-# todo2_line_midpoint.py
-
 class Point:
     """Clase base para representar un punto (x, y)."""
     def __init__(self, x=0, y=0):
