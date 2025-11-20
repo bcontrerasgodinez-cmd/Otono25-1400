@@ -35,10 +35,10 @@ def encontrar_emails(texto):
             Devuelve una lista vacía si no se encuentra ninguno.
     """
     # TODO: Paso 2. Define el patrón de expresión regular para un email.
-    patron =  # Escribe aquí el patrón de regex
+    patron = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' # Escribe aquí el patrón de regex
 
     # TODO: Paso 3. Usa re.findall() para encontrar todas las coincidencias.
-    emails_encontrados =  # Escribe aquí la llamada a re.findall()
+    emails_encontrados =  re.findall(patron, texto)# Escribe aquí la llamada a re.findall()
 
     # TODO: Paso 4. Devuelve la lista de emails encontrados.
     return emails_encontrados
@@ -69,6 +69,12 @@ if __name__ == "__main__":
   hoy consideramos inválidos, comenzaría a aceptar? Por el contrario,
   ¿qué correo electrónico **perfectamente válido** podría fallar si 
   la expresión se cambiara a `\.[a-zA-Z]{3}`?
+  Si cambiamos a {1,}, el patrón empezaría a aceptar TLD de solo una letra, 
+  como a@b.c, que normalmente consideramos inválidos.
+  Si lo cambiamos a {3}, entonces los dominios de 2 letras como .us, 
+  .uk o .es no se detectarían, aunque sean totalmente válidos. Por eso {2,} 
+  es un buen compromiso: captura la mayoría de TLD reales sin aceptar cosas 
+  demasiado cortas ni excluir TLD válidos.
 
 2.  **Límites del Patrón de Nombre de Usuario:**
   La sección del nombre de usuario es `[a-zA-Z0-9._%+-]+`.
@@ -79,6 +85,14 @@ if __name__ == "__main__":
   ¿Cómo se podría modificar el patrón para permitir un guion bajo, pero
     solo si va seguido de una letra o número, garantizando que el nombre
       de usuario no empiece ni termine con un guion bajo?
+  Aunque _ y - están incluidos en [], el patrón permite que esos caracteres estén 
+  en cualquier parte, pero no se recomienda que estén al inicio o al final. Muchos 
+  sistemas de correo consideran inválidos nombres que comienzan o terminan con _ o -.    
+  Para permitir _ y - solo internamente y garantizar que el usuario no empiece ni 
+  termine con ellos, podemos usar un patrón como:
+  [a-zA-Z0-9](?:[a-zA-Z0-9._%+-]*[a-zA-Z0-9])?
+  Esto asegura que el primer y último carácter sean letras o números, 
+  y _ o - solo puedan aparecer entre medio.
 
 3.  **Diferencia entre `re.search()`, `re.match()` y `re.findall()`:**
   El código utiliza **`re.findall(patron, texto)`**. Si cambiamos esta
@@ -87,4 +101,13 @@ if __name__ == "__main__":
   en la **cantidad de resultados** que obtendríamos para el `texto_de_prueba`
   actual? ¿Por qué `re.findall()` es la herramienta más apropiada para esta
   tarea específica de *extracción masiva*?
+  re.match() solo busca coincidencias al inicio del texto; si el email no está 
+  al principio, devuelve None.
+  re.search() busca la primera coincidencia en todo el texto y devuelve un objeto 
+  Match, no una lista de strings.
+  re.findall() devuelve todas las coincidencias como lista de strings, que es 
+  exactamente lo que necesitamos para extraer todos los correos en un texto.
+  Por eso re.findall() es ideal para esta tarea de extracción masiva, ya que 
+  nos da directamente una lista con todos los emails encontrados.
+
 """

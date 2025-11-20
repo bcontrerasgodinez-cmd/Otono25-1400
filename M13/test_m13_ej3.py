@@ -4,7 +4,7 @@
 import pytest
 
 try:
-    from M13.m13_encontrar_emails_ej3 import encontrar_emails
+    from m13_encontrar_emails_ej3 import encontrar_emails
 except ImportError:
     pytest.fail(
         "No se pudo importar la función 'encontrar_emails' del archivo 'student_code_m8_ex3.py'.")

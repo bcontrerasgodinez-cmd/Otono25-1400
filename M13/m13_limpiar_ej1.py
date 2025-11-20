@@ -32,15 +32,15 @@ def formatear_nombre_usuario(nombre):
     nombre_limpio = nombre.strip()
 
     # TODO: Paso 2. Convierte la cadena a minúsculas.
-    nombre_final =  # Usa .lower() en la cadena ya limpia.
+    nombre_final = nombre_limpio.lower() # Usa .lower() en la cadena ya limpia.
 
     # TODO: Paso 3. Comprueba si la cadena final contiene solo letras.
-    # if nombre_final.isalpha() ...:
+    if nombre_final.isalpha():
     # TODO: Paso 4. Si es válido, devuelve el nombre_final.
-    # return ...
-    # else:
+        return nombre_final
+    else:
     # TODO: Paso 5. Si no es válido, devuelve un mensaje de error.
-    return "Error: el nombre de usuario solo puede contener letras."
+        return "Error: el nombre de usuario solo puede contener letras."
 
 
 # --- Bloque para probar tu función ---
@@ -68,12 +68,26 @@ Entrada: '!' -> Salida: 'Error: el nombre de usuario solo puede contener letras.
 
 1. Porque es importante usar .strip() antes que .lower(). Que pasaria si los
  pones al reves?
+Es importante porque .strip() elimina los espacios en blanco al inifio y al 
+final de nuestra cadena, si se pone al revés, no pasa mucho en su funcionalidad
+pero habría una pequeña diferencia en el rendimiento ya que .lower() tendría que 
+procesar innecesariamente esos espacios en blanco.
+
 2. La función actual devuelve un mensaje de error general: "Error: el
  nombre de usuario solo puede contener letras." Si quisiéramos expandir
  la función para permitir números pero seguir previniendo símbolos
  (como !, @, #), ¿cómo modificarías el paso de validación actual
  (que usa .isalpha()), y cómo se vería un mensaje de error más específico
  en este caso?
+Podemos remplazar el .isalpha() por .isalnum() para que permita letras y números, 
+pero no símbolos como los mostrados en la pregunta, ejemplo:
+ if nombre_final.isalnum():
+        return nombre_final
+    else:
+        return "Error: el nombre de usuario solo puede contener letras y números, sin símbolos."
+
 3. ¿Por qué falla el control de validación (.isalpha() devuelve False)
  una entrada como "Usario Con Espacio"?
+Porque .isalpha() solo devuelve True si todos los caracteres son letras, como el 
+espacio " " no es una letra devuelve False y la validación falla
 """

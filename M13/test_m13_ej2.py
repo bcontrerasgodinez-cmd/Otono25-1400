@@ -6,7 +6,7 @@ import pytest
 try:
     # TODO: Cambia 'solution_m8_ex2' por 'student_code_m8_ex2' si estás usando el código del estudiante.
     # from solution_m8_ex2 import promedio_de_archivo
-    from student_code_m8_ex2 import promedio_de_archivo
+    from m13_promedio_ej2 import promedio_de_archivo
 except ImportError:
     pytest.fail(
         "No se pudo importar la función 'promedio_de_archivo' del archivo 'student_code_m8_ex2.py'.")
